@@ -56,11 +56,27 @@ export const userInputs = [
       placeholder: "Descuento 23%",
     },
     {
-      id: "Categoria",
-      label: "Categoría",
+      id: "Descripcion",
+      label: "Descripción",
       type: "text",
       placeholder: "Descuento 23%",
     },
+    {
+      id: "Codigocupon",
+      label: "CodigoCupon",
+      type: "text",
+      placeholder: "Descuento 23%",
+    },
+    {
+      id: "Fechahasta",
+      label: "Fecha Hasta",
+      type: "date",
+    },
+    {
+      id: "Fechadesde",
+      label: "Fecha Desde",
+      type: "date",
+    }
     
   ];
   export const selectc = [
