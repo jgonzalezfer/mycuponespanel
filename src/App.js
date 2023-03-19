@@ -3,6 +3,7 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import Newpro from "./pages/newpro/Newpro";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
@@ -77,13 +78,14 @@ function App() {
                 }
               />
               <Route
-                path="new"
+                path="newpro"
                 element={
                   <RequireAuth>
-                    <New inputs={productInputs} title="Add New Product" />
+                    <Newpro inputs={productInputs} title="Add New Product" />
                   </RequireAuth>
                 }
               />
+              
             </Route>
           </Route>
         </Routes>
