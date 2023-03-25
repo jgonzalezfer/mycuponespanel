@@ -5,7 +5,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Newpro from "./pages/newpro/Newpro";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import { productInputs, userInputs, selectc } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -81,7 +81,7 @@ function App() {
                 path="newpro"
                 element={
                   <RequireAuth>
-                    <Newpro inputs={productInputs} title="Add New Product" />
+                    <Newpro inputs={productInputs} selectc={selectc} title="Add New Product" />
                   </RequireAuth>
                 }
               />

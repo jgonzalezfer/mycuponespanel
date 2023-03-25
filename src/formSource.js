@@ -76,21 +76,21 @@ export const userInputs = [
       id: "Fechadesde",
       label: "Fecha Desde",
       type: "date",
-    }
+    },
     
   ];
   export const selectc = [
     {
-      id: "Nombre",
-      label: "Nombre",
+      key: "Shopping",
+      name: "Shopping",
     },
     {
-      id: "Nombre1",
-      label: "Nombre",
+      key: "Nombre1",
+      name: "Nombre",
     },
     {
-      id: "Nombre2",
-      label: "Nombre",
+      key: "Nombre2",
+      name: "Nombre",
     },
     
   ];

@@ -10,12 +10,11 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
-const Newpro = ({ inputs, title }) => {
+const Newpro = ({ inputs, title, selectc }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
@@ -49,7 +48,7 @@ const Newpro = ({ inputs, title }) => {
         },
         (error) => {
           console.log(error);
-          
+
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -78,15 +77,13 @@ const Newpro = ({ inputs, title }) => {
       //   data.email,
       //   data.password
       // );
-      await setDoc(doc(db, "cupones", data.Nombre+data.Descuento), {
+      await setDoc(doc(db, "cupones", data.Nombre + data.Descuento), {
         ...data,
         timeStamp: serverTimestamp(),
       });
       navigate(-1)
     } catch (err) {
       console.log(err);
-      console.log(data.id);
-      console.log("data.id");
     }
   };
 
@@ -134,14 +131,25 @@ const Newpro = ({ inputs, title }) => {
                   />
                 </div>
               ))}
+              <div className="formInput">
+                <label>Categoria
+                  <select name="categoria" onChange={handleInput} className="formInput" value={selectc.key} id="Categoria" >
+                    <option value={-1}> -- Select a Category -- </option>
+                    {selectc.map((selectc) => (
+                      <option value={selectc.key} key={selectc.key} id={selectc.key}>{selectc.key}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
               <button disabled={per !== null && per < 100} type="submit">
                 Send
               </button>
+              <button type="reset">Restaurar</button>
             </form>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
