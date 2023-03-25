@@ -79,19 +79,63 @@ export const userInputs = [
     },
     
   ];
-  export const selectc = [
+  export const selectcate = [
+    {
+      key: "Destacados",
+      name: "Destacados",
+    },
+    {
+      key: "Panoramas",
+      name: "Panoramas",
+    },
+    {
+      key: "Promociones",
+      name: "Promociones",
+    },
+    {
+      key: "Promociones",
+      name: "Promociones",
+    },
+    {
+      key: "Sabores",
+      name: "Sabores",
+    },
+    {
+      key: "Servicios",
+      name: "Servicios",
+    },
     {
       key: "Shopping",
       name: "Shopping",
     },
     {
-      key: "Nombre1",
-      name: "Nombre",
+      key: "Salud y Belleza",
+      name: "Salud y Belleza",
     },
     {
-      key: "Nombre2",
-      name: "Nombre",
+      key: "Viajes",
+      name: "Viajes",
     },
+    
+  ];
+
+  export const selectsubcate = [
+    {
+      key: "Ofertas populares",
+      name: "Ofertas populares",
+    },
+    {
+      key: "Nuevas ofertas",
+      name: "Nuevas ofertas",
+    },
+    {
+      key: "Exclusivo de Mycupones",
+      name: "Exclusivo de Mycupones",
+    },
+    {
+      key: "Último Minuto, ¡date prisa!",
+      name: "Último Minuto, ¡date prisa!",
+    }
     
   ];
   

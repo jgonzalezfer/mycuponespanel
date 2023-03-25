@@ -1,11 +1,12 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
+import ListPro from "./pages/listpro/ListPro";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Newpro from "./pages/newpro/Newpro";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs, selectc } from "./formSource";
+import { productInputs, userInputs, selectcate, selectsubcate } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -65,7 +66,7 @@ function App() {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <ListPro/>
                   </RequireAuth>
                 }
               />
@@ -81,11 +82,10 @@ function App() {
                 path="newpro"
                 element={
                   <RequireAuth>
-                    <Newpro inputs={productInputs} selectc={selectc} title="Add New Product" />
+                    <Newpro inputs={productInputs} selectcate={selectcate} selectsubcate={selectsubcate} title="Add New Product" />
                   </RequireAuth>
                 }
               />
-              
             </Route>
           </Route>
         </Routes>

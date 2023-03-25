@@ -13,6 +13,7 @@ export const userColumns = [
       );
     },
   },
+  
   {
     field: "email",
     headerName: "Email",
@@ -37,3 +38,40 @@ export const userColumns = [
     },
   },
 ];
+export const productsColumns = [
+  {
+    field: "Nombre",
+    headerName: "Nombre",
+    width: 230,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.img} alt="banner" />
+          {params.row.id}
+        </div>
+      );
+    },
+  },
+  {
+    field: "Descuento",
+    headerName: "Descuento",
+    width: 230,
+  },
+  {
+    field: "Empresa",
+    headerName: "Empresa",
+    width: 230,
+  },
+
+  {
+    field: "Categoria",
+    headerName: "Categoria",
+    width: 100,
+  },
+  {
+    field: "Status",
+    headerName: "Status",
+    width: 100,
+  }
+];
+

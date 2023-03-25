@@ -14,7 +14,7 @@ import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
-const Newpro = ({ inputs, title, selectc }) => {
+const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
@@ -133,11 +133,39 @@ const Newpro = ({ inputs, title, selectc }) => {
               ))}
               <div className="formInput">
                 <label>Categoria
-                  <select name="categoria" onChange={handleInput} className="formInput" value={selectc.key} id="Categoria" >
-                    <option value={-1}> -- Select a Category -- </option>
-                    {selectc.map((selectc) => (
-                      <option value={selectc.key} key={selectc.key} id={selectc.key}>{selectc.key}</option>
+                  <select name="categoria" onChange={handleInput} className="formInput" value={selectcate.key} id="Categoria" >
+                    <option value=""> -- Select a Category -- </option>
+                    {selectcate.map((selectcate) => (
+                      <option value={selectcate.key} key={selectcate.key} id={selectcate.key}>{selectcate.key}</option>
                     ))}
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>SubCategoria
+                  <select name="subcategoria" onChange={handleInput} className="formInput" value={selectsubcate.key} id="Subcategoria" >
+                    <option value=""> -- Select a Subcategory -- </option>
+                    {selectsubcate.map((selectsubcate) => (
+                      <option value={selectsubcate.key} key={selectsubcate.key} id={selectsubcate.key}>{selectsubcate.key}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Status Activo/Inactivo
+                  <select name="status" onChange={handleInput} className="formInput" id="Status" >
+                    <option value={-1}> -- Select -- </option>
+                    <option value="Activo" >Activo</option>
+                    <option value="Inactivo" >Inactivo</option>
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Tipo de descuento
+                  <select name="status" onChange={handleInput} className="formInput" id="Tipodescuento" >
+                    <option value={-1}> -- Select -- </option>
+                    <option value="Activo" >Cupones</option>
+                    <option value="Inactivo" >Ofertas</option>
                   </select>
                 </label>
               </div>
