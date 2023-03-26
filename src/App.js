@@ -2,6 +2,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import ListPro from "./pages/listpro/ListPro";
+import ListEmpre from "./pages/listempre/ListEmpre"; 
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Newpro from "./pages/newpro/Newpro";
@@ -83,6 +84,16 @@ function App() {
                 element={
                   <RequireAuth>
                     <Newpro inputs={productInputs} selectcate={selectcate} selectsubcate={selectsubcate} title="Add New Product" />
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="empresa">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <ListEmpre/>
                   </RequireAuth>
                 }
               />
