@@ -127,6 +127,7 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
                     id={input.id}
                     type={input.type}
                     placeholder={input.placeholder}
+                    maxLength={input.maxlength}
                     onChange={handleInput}
                   />
                 </div>
@@ -152,7 +153,7 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
                 </label>
               </div>
               <div className="formInput">
-                <label>Status Activo/Inactivo
+                <label>Status
                   <select name="status" onChange={handleInput} className="formInput" id="Status" >
                     <option value={-1}> -- Select -- </option>
                     <option value="Activo" >Activo</option>
@@ -162,17 +163,27 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
               </div>
               <div className="formInput">
                 <label>Tipo de descuento
-                  <select name="status" onChange={handleInput} className="formInput" id="Tipodescuento" >
+                  <select name="tipodescuento" onChange={handleInput} className="formInput" id="Tipodescuento" >
                     <option value={-1}> -- Select -- </option>
                     <option value="Activo" >Cupones</option>
                     <option value="Inactivo" >Ofertas</option>
                   </select>
                 </label>
               </div>
+              <div className="formInput">
+                <label>Tipo de regalo
+                  <select name="status" onChange={handleInput} className="formInput" id="Tiporegalo" >
+                    <option value={-1}> -- Select -- </option>
+                    <option value="Envío gratis" >Envío gratis</option>
+                    <option value="En todo" >En todo</option>
+                    <option value="Regalos" >Regalos</option>
+                  </select>
+                </label>
+              </div>
               <button disabled={per !== null && per < 100} type="submit">
                 Send
               </button>
-              <button type="reset">Restaurar</button>
+              <button type="reset">Reset</button>
             </form>
           </div>
         </div>

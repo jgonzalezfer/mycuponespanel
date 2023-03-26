@@ -48,12 +48,14 @@ export const userInputs = [
       label: "Nombre",
       type: "text",
       placeholder: "Apple Macbook Pro",
+      maxlength: "20",
     },
     {
       id: "Descuento",
       label: "Descuento",
       type: "number",
       placeholder: "Descuento 23%",
+      maxlength: "6",
     },
     {
       id: "Descripcion",
@@ -66,6 +68,7 @@ export const userInputs = [
       label: "CodigoCupon",
       type: "text",
       placeholder: "Descuento 23%",
+      maxlength: "20",
     },
     {
       id: "Fechahasta",
@@ -87,10 +90,6 @@ export const userInputs = [
     {
       key: "Panoramas",
       name: "Panoramas",
-    },
-    {
-      key: "Promociones",
-      name: "Promociones",
     },
     {
       key: "Promociones",

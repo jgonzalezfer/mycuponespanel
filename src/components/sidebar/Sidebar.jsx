@@ -18,7 +18,7 @@ import { auth } from "../../firebase";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
-  const signOut =  () => {auth.signOut()}
+  const signOut = () => { auth.signOut() }
   return (
     <div className="sidebar">
       <div className="top">
@@ -47,10 +47,12 @@ const Sidebar = () => {
               <span>Products</span>
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Orders</span>
-          </li>
+          <Link to="/empresa" style={{ textDecoration: "none" }}>
+            <li>
+              <CreditCardIcon className="icon" />
+              <span>Empresa</span>
+            </li>
+          </Link>
           <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>
@@ -83,10 +85,10 @@ const Sidebar = () => {
             <span>Profile</span>
           </li>
           <Link to="/login" style={{ textDecoration: "none" }} onClick={signOut}>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span>Logout</span>
-          </li>
+            <li>
+              <ExitToAppIcon className="icon" />
+              <span>Logout</span>
+            </li>
           </Link>
         </ul>
       </div>

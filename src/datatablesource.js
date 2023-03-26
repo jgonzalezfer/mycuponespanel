@@ -55,23 +55,33 @@ export const productsColumns = [
   {
     field: "Descuento",
     headerName: "Descuento",
-    width: 230,
+    width: 100,
   },
   {
     field: "Empresa",
     headerName: "Empresa",
-    width: 230,
+    width: 100,
+  },
+  {
+    field: "Tipodescuento",
+    headerName: "Tipodescuento",
+    width: 100,
+  },
+  {
+    field: "Tiporegalo",
+    headerName: "Tiporegalo",
+    width: 100,
   },
 
   {
-    field: "Categoria",
-    headerName: "Categoria",
+    field: "Subcategoria",
+    headerName: "Subcategoria",
     width: 100,
   },
   {
     field: "Status",
     headerName: "Status",
-    width: 100,
+    width: 230,
   }
 ];
 
