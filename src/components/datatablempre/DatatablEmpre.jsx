@@ -86,7 +86,7 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New Company
-        <Link to="/users/new" className="link">
+        <Link to="/empresa/newempre" className="link">
           Add New
         </Link>
       </div>

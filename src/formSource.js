@@ -58,12 +58,6 @@ export const userInputs = [
       maxlength: "6",
     },
     {
-      id: "Descripcion",
-      label: "Descripción",
-      type: "text",
-      placeholder: "Descuento 23%",
-    },
-    {
       id: "Codigocupon",
       label: "CodigoCupon",
       type: "text",
@@ -117,7 +111,6 @@ export const userInputs = [
     },
     
   ];
-
   export const selectsubcate = [
     {
       key: "Ofertas populares",
@@ -137,4 +130,52 @@ export const userInputs = [
     }
     
   ];
+  export const empresaInputs = [
+    {
+      id: "Nombre",
+      label: "Nombre de la Empresa",
+      type: "text",
+      placeholder: "Lenovo",
+      maxlength: "20",
+    },
+    {
+      id: "Telefono",
+      label: "Teléfono",
+      type: "text",
+      placeholder: "+56 9 22996030",
+      maxlength: "20",
+    },
+    {
+      id: "Sitioweb",
+      label: "Sitio web",
+      type: "text",
+      placeholder: "www.accionvenus.com",
+      maxlength: "20",
+    },
+    {
+      id: "Facebook",
+      label: "Facebook",
+      type: "text",
+      placeholder: "Facebook",
+      maxlength: "20",
+    },
+    {
+      id: "Instagram",
+      label: "Instagram",
+      type: "text",
+      placeholder: "Instagram",
+      maxlength: "20",
+    },
+    {
+      id: "Twitter",
+      label: "Twitter",
+      type: "text",
+      placeholder: "Twitter",
+      maxlength: "20",
+    },
+  
+    
+  ];
+
+  
   

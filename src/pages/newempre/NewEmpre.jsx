@@ -10,11 +10,12 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { db, storage } from "../../firebase";
+import { auth, db, storage } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
-const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
+const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
@@ -48,11 +49,10 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
         },
         (error) => {
           console.log(error);
-
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setData((prev) => ({ ...prev, img: downloadURL }));
+            setData((prev) => ({ ...prev, imgEmpre: downloadURL }));
           });
         }
       );
@@ -77,7 +77,7 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
       //   data.email,
       //   data.password
       // );
-      await setDoc(doc(db, "cupones", data.Nombre + data.Descuento), {
+      await setDoc(doc(db, "empresa", data.Nombre), {
         ...data,
         timeStamp: serverTimestamp(),
       });
@@ -127,73 +127,23 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
                     id={input.id}
                     type={input.type}
                     placeholder={input.placeholder}
-                    maxLength={input.maxlength}
                     onChange={handleInput}
                   />
                 </div>
               ))}
               <div className="formInput">
                 <label>Descripción</label>
-                <textarea name="Descripción" placeholder="Student Beans y Omio se han aliado para ofrecer a los estudiantes un 10% de descuento para viajar ..." id="Descripcion" onChange={handleInput}></textarea>
-              </div>
-              <div className="formInput">
-                <label>Categoria
-                  <select name="categoria" onChange={handleInput} className="formInput" value={selectcate.key} id="Categoria" >
-                    <option value=""> -- Select a Category -- </option>
-                    {selectcate.map((selectcate) => (
-                      <option value={selectcate.key} key={selectcate.key} id={selectcate.key}>{selectcate.key}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <div className="formInput">
-                <label>SubCategoria
-                  <select name="subcategoria" onChange={handleInput} className="formInput" value={selectsubcate.key} id="Subcategoria" >
-                    <option value=""> -- Select a Subcategory -- </option>
-                    {selectsubcate.map((selectsubcate) => (
-                      <option value={selectsubcate.key} key={selectsubcate.key} id={selectsubcate.key}>{selectsubcate.key}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <div className="formInput">
-                <label>Status
-                  <select name="status" onChange={handleInput} className="formInput" id="Status" >
-                    <option value={-1}> -- Select -- </option>
-                    <option value="Activo" >Activo</option>
-                    <option value="Inactivo" >Inactivo</option>
-                  </select>
-                </label>
-              </div>
-              <div className="formInput">
-                <label>Tipo de descuento
-                  <select name="tipodescuento" onChange={handleInput} className="formInput" id="Tipodescuento" >
-                    <option value={-1}> -- Select -- </option>
-                    <option value="Activo" >Cupones</option>
-                    <option value="Inactivo" >Ofertas</option>
-                  </select>
-                </label>
-              </div>
-              <div className="formInput">
-                <label>Tipo de regalo
-                  <select name="status" onChange={handleInput} className="formInput" id="Tiporegalo" >
-                    <option value={-1}> -- Select -- </option>
-                    <option value="Envío gratis" >Envío gratis</option>
-                    <option value="En todo" >En todo</option>
-                    <option value="Regalos" >Regalos</option>
-                  </select>
-                </label>
+                  <textarea name="Descripción" placeholder="Si todavía no has escuchado nada de Uber en Chile ahora tienes el mejor momento para empez..." id="Descripcion" onChange={handleInput}></textarea>
               </div>
               <button disabled={per !== null && per < 100} type="submit">
                 Send
               </button>
-              <button type="reset">Reset</button>
             </form>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
-export default Newpro;
+export default New;

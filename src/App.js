@@ -4,10 +4,11 @@ import List from "./pages/list/List";
 import ListPro from "./pages/listpro/ListPro";
 import ListEmpre from "./pages/listempre/ListEmpre"; 
 import Single from "./pages/single/Single";
-import New from "./pages/new/New";
+import New from "./pages/new/New"; 
 import Newpro from "./pages/newpro/Newpro";
+import NewEmpre from "./pages/newempre/NewEmpre";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs, selectcate, selectsubcate } from "./formSource";
+import { productInputs, userInputs, selectcate, selectsubcate, empresaInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -16,7 +17,7 @@ import { AuthContext } from "./context/AuthContext";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const {currentUser} = useContext(AuthContext)
+  const { currentUser } = useContext(AuthContext)
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
@@ -67,7 +68,7 @@ function App() {
                 index
                 element={
                   <RequireAuth>
-                    <ListPro/>
+                    <ListPro />
                   </RequireAuth>
                 }
               />
@@ -93,7 +94,15 @@ function App() {
                 index
                 element={
                   <RequireAuth>
-                    <ListEmpre/>
+                    <ListEmpre />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="newempre"
+                element={
+                  <RequireAuth>
+                    <NewEmpre inputs={empresaInputs} title="Add New Empresa" />
                   </RequireAuth>
                 }
               />
