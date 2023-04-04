@@ -84,4 +84,29 @@ export const productsColumns = [
     width: 230,
   }
 ];
+export const compaColumns = [
+  {
+    field: "Nombre",
+    headerName: "Nombre",
+    width: 230,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.imgEmpre} alt="banner" />
+          {params.row.id}
+        </div>
+      );
+    },
+  },
+  {
+    field: "Sitioweb",
+    headerName: "Sitioweb",
+    width: 100,
+  },
+  {
+    field: "Telefono",
+    headerName: "Telefono",
+    width: 100,
+  }
+];
 

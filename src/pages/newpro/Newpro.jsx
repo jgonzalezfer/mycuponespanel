@@ -13,14 +13,17 @@ import {
 import { db, storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import {query, onSnapshot } from "firebase/firestore";
 
 const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
   const [per, setPerc] = useState(null);
+  const [tasks, setTasks] = useState([]);
   const navigate = useNavigate()
 
   useEffect(() => {
+    
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
 
@@ -59,6 +62,15 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
     };
     file && uploadFile();
   }, [file]);
+
+  useEffect(() => {
+    const q = query(collection(db, 'empresa'))
+    onSnapshot(q, (snapShot) => {
+      setTasks(snapShot.docs.map(doc => ({
+        id: doc.id, ...doc.data()
+      })))
+    })
+  },[]);
 
   console.log(data);
 
@@ -181,6 +193,16 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
                     <option value="Envío gratis" >Envío gratis</option>
                     <option value="En todo" >En todo</option>
                     <option value="Regalos" >Regalos</option>
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Empresa
+                  <select name="empresa" onChange={handleInput} className="formInput" id="Empresa" >
+                    <option value=""> -- Select a Empresa -- </option>
+                    {tasks.map((tasks) => (
+                      <option value={tasks.Nombre} key={tasks.id} >{tasks.Nombre}</option>
+                    ))}
                   </select>
                 </label>
               </div>

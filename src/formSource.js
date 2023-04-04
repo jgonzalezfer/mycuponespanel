@@ -54,14 +54,14 @@ export const userInputs = [
       id: "Descuento",
       label: "Descuento",
       type: "number",
-      placeholder: "Descuento 23%",
+      placeholder: "23%",
       maxlength: "6",
     },
     {
       id: "Codigocupon",
       label: "CodigoCupon",
       type: "text",
-      placeholder: "Descuento 23%",
+      placeholder: "CuponesdMYcupones",
       maxlength: "20",
     },
     {
