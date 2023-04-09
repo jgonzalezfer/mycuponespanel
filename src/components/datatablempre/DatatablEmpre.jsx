@@ -14,7 +14,7 @@ import { db } from "../../firebase";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
-
+  const [localid, setLocalid] = useState('');
   useEffect(() => {
     // const fetchData = async () => {
     //   let list = [];
@@ -60,6 +60,16 @@ const Datatable = () => {
     }
   };
 
+  const setLocalStorageid = async (id) =>{
+    try {
+      await setLocalid(id);
+      window.localStorage.setItem("id",id);
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
   const actionColumn = [
     {
       field: "action",
@@ -68,7 +78,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
+            <Link to={`/empresa/empresaId/`} style={{ textDecoration: "none" }} onClick={() => setLocalStorageid(params.id)}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -91,6 +101,7 @@ const Datatable = () => {
         </Link>
       </div>
       <DataGrid
+        // onPageChange={localStorage.removeItem('id')}
         className="datagrid"
         rows={data}
         columns={compaColumns.concat(actionColumn)}

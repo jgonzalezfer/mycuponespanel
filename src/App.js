@@ -2,9 +2,10 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import ListPro from "./pages/listpro/ListPro";
-import ListEmpre from "./pages/listempre/ListEmpre"; 
+import ListEmpre from "./pages/listempre/ListEmpre";
 import Single from "./pages/single/Single";
-import New from "./pages/new/New"; 
+import Singlempre from "./pages/edit/singlempre/singlempre/Singlempre";
+import New from "./pages/new/New";
 import Newpro from "./pages/newpro/Newpro";
 import NewEmpre from "./pages/newempre/NewEmpre";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -103,6 +104,14 @@ function App() {
                 element={
                   <RequireAuth>
                     <NewEmpre inputs={empresaInputs} title="Add New Empresa" />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="empresaId"
+                element={
+                  <RequireAuth>
+                    <Singlempre />
                   </RequireAuth>
                 }
               />
