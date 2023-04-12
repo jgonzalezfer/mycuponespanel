@@ -48,7 +48,7 @@ export const userInputs = [
       label: "Nombre",
       type: "text",
       placeholder: "Apple Macbook Pro",
-      maxlength: "20",
+      maxlength: "40",
     },
     {
       id: "Descuento",

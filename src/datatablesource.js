@@ -81,6 +81,7 @@ export const productsColumns = [
   {
     field: "Status",
     headerName: "Status",
+    className: "status",
     width: 230,
   }
 ];
