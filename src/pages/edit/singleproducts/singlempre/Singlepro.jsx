@@ -71,11 +71,6 @@ const Singlepro = () => {
             <h1 className="title">Information</h1>
             {data.map((data) => (
             <div className="item" key={data.toString()}>
-              <img
-                src={data.imgEmpre}
-                alt=""
-                className="itemImg"
-              />
                 <div className="details"  >
                   <h1 className="itemTitle" >{data.Nombre}</h1>
                   <div className="detailItem">
