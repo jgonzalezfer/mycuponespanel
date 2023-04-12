@@ -89,7 +89,7 @@ const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
       //   data.email,
       //   data.password
       // );
-      await setDoc(doc(db, "cupones", data.Nombre + data.Descuento), {
+      await setDoc(doc(db, "cupones", data.Nombre), {
         ...data,
         timeStamp: serverTimestamp(),
       });
