@@ -11,6 +11,7 @@ import {
   where
 } from "firebase/firestore";
 import { db } from "../../../../firebase";
+import { Link } from "react-router-dom";
 
 
 
@@ -65,15 +66,15 @@ const Single = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            <div className="editButton"><Link to="/empresa/editempresa/" className="link">Edit</Link></div>
             <h1 className="title">Information</h1>
             {data.map((data) => (
-            <div className="item" key={data.toString()}>
-              <img
-                src={data.imgEmpre}
-                alt=""
-                className="itemImg"
-              />
+              <div className="item" key={data.toString()}>
+                <img
+                  src={data.imgEmpre}
+                  alt=""
+                  className="itemImg"
+                />
                 <div className="details"  >
                   <h1 className="itemTitle" >{data.Nombre}</h1>
                   <div className="detailItem">
@@ -93,7 +94,7 @@ const Single = () => {
                     <span className="itemValue">{data.Instagram}</span>
                   </div>
                 </div>
-            </div>
+              </div>
             ))}
           </div>
           <div className="right">
