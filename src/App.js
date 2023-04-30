@@ -5,8 +5,9 @@ import ListPro from "./pages/listpro/ListPro";
 import ListEmpre from "./pages/listempre/ListEmpre";
 import Single from "./pages/single/Single";
 import Singlempre from "./pages/edit/singlempre/singlempre/Singlempre";
-import Singlepro from "./pages/edit/singleproducts/singlempre/Singlepro"; 
+import Singlepro from "./pages/edit/singleproducts/singlempre/Singlepro";
 import EditEmpresa from "./pages/edit/editempresa/EditEmpresa";
+import Editpro from "./pages/edit/editpro/Editpro";
 import New from "./pages/new/New";
 import Newpro from "./pages/newpro/Newpro";
 import NewEmpre from "./pages/newempre/NewEmpre";
@@ -88,6 +89,14 @@ function App() {
                 element={
                   <RequireAuth>
                     <Newpro inputs={productInputs} selectcate={selectcate} selectsubcate={selectsubcate} title="Add New Product" />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="editpro"
+                element={
+                  <RequireAuth>
+                    <Editpro inputs={productInputs} selectcate={selectcate} selectsubcate={selectsubcate} title="Edit Product" />
                   </RequireAuth>
                 }
               />

@@ -11,6 +11,7 @@ import {
   where
 } from "firebase/firestore";
 import { db } from "../../../../firebase";
+import { Link } from "react-router-dom";
 
 
 
@@ -67,7 +68,7 @@ const Singlepro = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            <div className="editButton"><Link to="/products/editpro/" className="link">Edit</Link></div>
             <h1 className="title">Information</h1>
             {data.map((data) => (
             <div className="item" key={data.toString()}>

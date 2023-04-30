@@ -67,7 +67,6 @@ const Datatable = () => {
     } catch (error) {
       console.log(error)
     }
-
   }
 
   const actionColumn = [

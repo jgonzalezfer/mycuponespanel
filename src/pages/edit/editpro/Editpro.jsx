@@ -14,21 +14,23 @@ import {
   where,
   updateDoc
 } from "firebase/firestore";
-import { auth, db, storage } from "../../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db, storage } from "../../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 
-const New = ({ inputs, title }) => {
+const Newpro = ({ inputs, title, selectcate, selectsubcate }) => {
   const [file, setFile] = useState("");
   const [data, setData] = useState({});
-  const [datas, setDatas] = useState({});
   const [per, setPerc] = useState(null);
+  const [tasks, setTasks] = useState([]);
+  const [datas, setDatas] = useState({});
   const [localid, setLocalid] = useState(window.localStorage.getItem('id'));
   const [localidar, setLocalidar] = useState(JSON.parse(localStorage.getItem('ids')));
   const navigate = useNavigate()
 
+
   useEffect(() => {
+    
     const uploadFile = () => {
       const name = new Date().getTime() + file.name;
 
@@ -56,17 +58,18 @@ const New = ({ inputs, title }) => {
         },
         (error) => {
           console.log(error);
+
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setData((prev) => ({ ...prev, imgEmpre: downloadURL }));
+            setData((prev) => ({ ...prev, img: downloadURL }));
           });
         }
       );
     };
     file && uploadFile();
-
-    const colref = collection(db, "empresa");
+    
+    const colref = collection(db, "cupones");
 
     const q = query(colref, where("Nombre", "==", localid));
 
@@ -86,23 +89,21 @@ const New = ({ inputs, title }) => {
     return () => {
       unsub();
     };
-
   }, [file]);
-  console.log("fs", datas)
 
 
 
   const handleInput = (e) => {
     const id = e.target.id;
-    const values = e.target.value;
-    setData({ ...data, [id]: values });
+    const value = e.target.value;
+
+    setData({ ...data, [id]: value });
   };
-  console.log(data)
 
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await updateDoc(doc(db, "empresa", localid), {
+      await updateDoc(doc(db, "cupones", localid), {
         ...data,
         timeStamp: serverTimestamp(),
       });
@@ -118,8 +119,8 @@ const New = ({ inputs, title }) => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          {Object.values(datas).map(element => (
-            <h1 key={element.id}>Edit Empresa: {element.id}</h1>
+        {Object.values(datas).map(element => (
+            <h1 key={element.id}>Edit Cupon: {element.id}</h1>
           ))}
         </div>
         <div className="bottom">
@@ -154,33 +155,83 @@ const New = ({ inputs, title }) => {
                     id={input.id}
                     type={input.type}
                     placeholder={input.placeholder}
+                    maxLength={input.maxlength}
                     onChange={handleInput}
                   />
                 </div>
               ))}
               <div className="formInput">
                 <label>Descripción</label>
-                <textarea name="Descripción"
-                  placeholder="Si todavía no has escuchado nada de Uber en Chile ahora tienes el mejor momento para empez..."
-                  id="Descripcion"
-                  key="Descripcion"
-                  onChange={handleInput}></textarea>
+                <textarea name="Descripción" placeholder="Student Beans y Omio se han aliado para ofrecer a los estudiantes un 10% de descuento para viajar ..." id="Descripcion" onChange={handleInput}></textarea>
               </div>
-              {/* {Object.values(datas).map(element => (
-                <div key={element.id}>
-                  <h2>{element.Nombre}</h2>
-                  <p>{element.Descripcion}</p>
-                </div>
-              ))} */}
+              <div className="formInput">
+                <label>Categoria
+                  <select name="categoria" onChange={handleInput} className="formInput" value={selectcate.key} id="Categoria" >
+                    <option value=""> -- Select a Category -- </option>
+                    {selectcate.map((selectcate) => (
+                      <option value={selectcate.key} key={selectcate.key} id={selectcate.key}>{selectcate.key}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>SubCategoria
+                  <select name="subcategoria" onChange={handleInput} className="formInput" value={selectsubcate.key} id="Subcategoria" >
+                    <option value=""> -- Select a Subcategory -- </option>
+                    {selectsubcate.map((selectsubcate) => (
+                      <option value={selectsubcate.key} key={selectsubcate.key} id={selectsubcate.key}>{selectsubcate.key}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Status
+                  <select name="status" onChange={handleInput} className="formInput" id="Status" >
+                    <option value={-1}> -- Select -- </option>
+                    <option value="Activo" >Activo</option>
+                    <option value="Inactivo" >Inactivo</option>
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Tipo de descuento
+                  <select name="tipodescuento" onChange={handleInput} className="formInput" id="Tipodescuento" >
+                    <option value={-1}> -- Select -- </option>
+                    <option value="Activo" >Cupones</option>
+                    <option value="Inactivo" >Ofertas</option>
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Tipo de regalo
+                  <select name="status" onChange={handleInput} className="formInput" id="Tiporegalo" >
+                    <option value={-1}> -- Select -- </option>
+                    <option value="Envío gratis" >Envío gratis</option>
+                    <option value="En todo" >En todo</option>
+                    <option value="Regalos" >Regalos</option>
+                  </select>
+                </label>
+              </div>
+              <div className="formInput">
+                <label>Empresa
+                  <select name="empresa" onChange={handleInput} className="formInput" id="Empresa" >
+                    <option value=""> -- Select a Empresa -- </option>
+                    {tasks.map((tasks) => (
+                      <option value={tasks.Nombre} key={tasks.id} >{tasks.Nombre}</option>
+                    ))}
+                  </select>
+                </label>
+              </div>
               <button disabled={per !== null && per < 100} type="submit">
-                Update
+                Send
               </button>
+              <button type="reset">Reset</button>
             </form>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
-export default New;
+export default Newpro;

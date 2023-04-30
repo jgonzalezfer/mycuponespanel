@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 const Single = () => {
   const [data, setData] = useState([]);
   const [localid, setLocalid] = useState(window.localStorage.getItem('id'));
+  const [localidar, setLocalidar] = useState({});
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -47,12 +48,14 @@ const Single = () => {
         list.push({ id: doc.id, ...doc.data() });
       });
       setData(list);
-      console.log(list);
+      window.localStorage.setItem("ids", JSON.stringify(list));
+      console.log("sd",localidar);
     },
       (error) => {
         console.log(error);
       }
     );
+
 
     return () => {
       unsub();
