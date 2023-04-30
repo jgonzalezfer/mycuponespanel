@@ -11,12 +11,14 @@ import {
   where
 } from "firebase/firestore";
 import { db } from "../../../../firebase";
+import { Link } from "react-router-dom";
 
 
 
 const Single = () => {
   const [data, setData] = useState([]);
   const [localid, setLocalid] = useState(window.localStorage.getItem('id'));
+  const [localidar, setLocalidar] = useState({});
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -46,12 +48,14 @@ const Single = () => {
         list.push({ id: doc.id, ...doc.data() });
       });
       setData(list);
-      console.log(list);
+      window.localStorage.setItem("ids", JSON.stringify(list));
+      console.log("sd",localidar);
     },
       (error) => {
         console.log(error);
       }
     );
+
 
     return () => {
       unsub();
@@ -65,15 +69,15 @@ const Single = () => {
         <Navbar />
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+            <div className="editButton"><Link to="/empresa/editempresa/" className="link">Edit</Link></div>
             <h1 className="title">Information</h1>
             {data.map((data) => (
-            <div className="item" key={data.toString()}>
-              <img
-                src={data.imgEmpre}
-                alt=""
-                className="itemImg"
-              />
+              <div className="item" key={data.toString()}>
+                <img
+                  src={data.imgEmpre}
+                  alt=""
+                  className="itemImg"
+                />
                 <div className="details"  >
                   <h1 className="itemTitle" >{data.Nombre}</h1>
                   <div className="detailItem">
@@ -93,7 +97,7 @@ const Single = () => {
                     <span className="itemValue">{data.Instagram}</span>
                   </div>
                 </div>
-            </div>
+              </div>
             ))}
           </div>
           <div className="right">

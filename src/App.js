@@ -4,13 +4,15 @@ import List from "./pages/list/List";
 import ListPro from "./pages/listpro/ListPro";
 import ListEmpre from "./pages/listempre/ListEmpre";
 import Single from "./pages/single/Single";
-import Singlempre from "./pages/edit/singlempre/singlempre/Singlempre"; 
+import Singlempre from "./pages/edit/singlempre/singlempre/Singlempre";
 import Singlepro from "./pages/edit/singleproducts/singlempre/Singlepro";
+import EditEmpresa from "./pages/edit/editempresa/EditEmpresa";
+import Editpro from "./pages/edit/editpro/Editpro";
 import New from "./pages/new/New";
 import Newpro from "./pages/newpro/Newpro";
-import NewEmpre from "./pages/newempre/NewEmpre"; 
+import NewEmpre from "./pages/newempre/NewEmpre";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs, selectcate, selectsubcate, empresaInputs } from "./formSource";
+import { productInputs, userInputs, selectcate, selectsubcate, empresaInputs, empresaInputsedit } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
@@ -90,6 +92,14 @@ function App() {
                   </RequireAuth>
                 }
               />
+              <Route
+                path="editpro"
+                element={
+                  <RequireAuth>
+                    <Editpro inputs={productInputs} selectcate={selectcate} selectsubcate={selectsubcate} title="Edit Product" />
+                  </RequireAuth>
+                }
+              />
             </Route>
             <Route path="empresa">
               <Route
@@ -113,6 +123,14 @@ function App() {
                 element={
                   <RequireAuth>
                     <Singlempre />
+                  </RequireAuth>
+                }
+              > </Route>
+              <Route
+                path="editempresa"
+                element={
+                  <RequireAuth>
+                    <EditEmpresa inputs={empresaInputsedit} title="Edit Empresa" />
                   </RequireAuth>
                 }
               />
