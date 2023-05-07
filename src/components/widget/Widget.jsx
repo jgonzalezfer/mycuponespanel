@@ -8,6 +8,7 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
   const [amount, setAmount] = useState(null);
@@ -20,7 +21,8 @@ const Widget = ({ type }) => {
         title: "USERS",
         isMoney: false,
         link: "See all users",
-        query:"users",
+        url: "users",
+        querys:"users",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -34,9 +36,11 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "Company",
+        querys:"empresa",
+        url: "empresa",
         isMoney: false,
-        link: "View all orders",
+        link: "View all Company",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -63,9 +67,10 @@ const Widget = ({ type }) => {
       break;
     case "product":
       data = {
-        title: "PRODUCTS",
-        query:"products",
-        link: "See details",
+        title: "Coupons",
+        querys:"cupones",
+        url: "products",
+        link: "See Coupons",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -88,12 +93,12 @@ const Widget = ({ type }) => {
       const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
 
       const lastMonthQuery = query(
-        collection(db, data.query),
+        collection(db, data.querys),
         where("timeStamp", "<=", today),
         where("timeStamp", ">", lastMonth)
       );
       const prevMonthQuery = query(
-        collection(db, data.query),
+        collection(db, data.querys),
         where("timeStamp", "<=", lastMonth),
         where("timeStamp", ">", prevMonth)
       );
@@ -117,7 +122,9 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney && "$"} {amount}
         </span>
-        <span className="link">{data.link}</span>
+        <Link to={data.url} className="link">
+        {data.link}
+        </Link>
       </div>
       <div className="right">
         <div className={`percentage ${diff < 0 ? "negative" : "positive"}`}>

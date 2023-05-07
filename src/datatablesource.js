@@ -43,14 +43,14 @@ export const productsColumns = [
     field: "Nombre",
     headerName: "Nombre",
     width: 230,
-    renderCell: (params) => {
-      return (
-        <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="banner" />
-          {params.row.id}
-        </div>
-      );
-    },
+    // renderCell: (params) => {
+    //   return (
+    //     <div className="cellWithImg">
+    //       <img className="cellImg" src={params.row.img} alt="banner" />
+    //       {params.row.id}
+    //     </div>
+    //   );
+    // },
   },
   {
     field: "Descuento",
@@ -82,6 +82,18 @@ export const productsColumns = [
     field: "Status",
     headerName: "Status",
     className: "status",
+    width: 230,
+  },
+  {
+    field: "Categoria",
+    headerName: "Categoria",
+    className: "Categoria",
+    width: 230,
+  },
+  {
+    field: "Subcategoria",
+    headerName: "Subcategoria",
+    className: "Subcategoria",
     width: 230,
   }
 ];
