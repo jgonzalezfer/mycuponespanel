@@ -88,32 +88,40 @@ export const selectcate = [
     name: "Destacados",
   },
   {
-    key: "Panoramas",
-    name: "Panoramas",
+    key: "Ropa",
+    name: "Ropa",
   },
   {
-    key: "Promociones",
-    name: "Promociones",
+    key: "Electrónica",
+    name: "Electrónica",
   },
   {
-    key: "Sabores",
-    name: "Sabores",
+    key: "Alimentos",
+    name: "Alimentos",
   },
   {
-    key: "Servicios",
-    name: "Servicios",
+    key: "Salud y belleza",
+    name: "Salud y belleza",
   },
   {
-    key: "Shopping",
-    name: "Shopping",
+    key: "Deportes",
+    name: "Deportes",
   },
   {
-    key: "Salud y Belleza",
-    name: "Salud y Belleza",
+    key: "Juguetes",
+    name: "Juguetes",
   },
   {
-    key: "Viajes",
-    name: "Viajes",
+    key: "Libros",
+    name: "Libros",
+  },
+  {
+    key: "Automóviles",
+    name: "Automóviles",
+  },
+  {
+    key: "Mascotas",
+    name: "Mascotas",
   },
 
 ];
